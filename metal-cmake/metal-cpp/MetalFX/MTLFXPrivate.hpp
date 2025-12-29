@@ -71,7 +71,7 @@ namespace MTLFX::Private
     }
 } // MTLFX::Private
 
-#if defined(__MAC_16_0) || defined(__IPHONE_19_0) || defined(__TVOS_19_0)
+#if defined(__MAC_26_0) || defined(__IPHONE_26_0) || defined(__TVOS_26_0)
 
 #define _MTLFX_PRIVATE_DEF_STR( type, symbol )                                                                                  \
     _MTLFX_EXTERN type const                            MTLFX##symbol _MTLFX_PRIVATE_IMPORT;                                    \
@@ -97,7 +97,7 @@ namespace MTLFX::Private
 
 #define _MTLFX_PRIVATE_DEF_WEAK_CONST( type, symbol )   _MTLFX_PRIVATE_DEF_CONST( type, symbol )
 
-#endif // defined(__MAC_15_0) || defined(__IPHONE_18_0) || defined(__TVOS_18_0)
+#endif
 
 #else
 
@@ -165,10 +165,6 @@ namespace MTLFX
                                     "colorTextureUsage" );
             _MTLFX_PRIVATE_DEF_SEL( deltaTime,
                                     "deltaTime" );
-            _MTLFX_PRIVATE_DEF_SEL( denoisedScaler,
-                                    "denoisedScaler" );
-            _MTLFX_PRIVATE_DEF_SEL( denoisedScaler4,
-                                    "denoisedScaler4" );
             _MTLFX_PRIVATE_DEF_SEL( denoiseStrengthMaskTexture,
                                     "denoiseStrengthMaskTexture" );
             _MTLFX_PRIVATE_DEF_SEL( denoiseStrengthMaskTextureFormat,
@@ -319,10 +315,6 @@ namespace MTLFX
                                     "setColorTextureFormat:" );
             _MTLFX_PRIVATE_DEF_SEL( setDeltaTime_,
                                     "setDeltaTime:" );
-            _MTLFX_PRIVATE_DEF_SEL( setDenoisedScaler_,
-                                    "setDenoisedScaler:" );
-            _MTLFX_PRIVATE_DEF_SEL( setDenoisedScaler4_,
-                                    "setDenoisedScaler4:" );
             _MTLFX_PRIVATE_DEF_SEL( setDenoiseStrengthMaskTexture_,
                                     "setDenoiseStrengthMaskTexture:" );
             _MTLFX_PRIVATE_DEF_SEL( setDenoiseStrengthMaskTextureEnabled_,
@@ -366,7 +358,7 @@ namespace MTLFX
             _MTLFX_PRIVATE_DEF_SEL( setInputWidth_,
                                     "setInputWidth:" );
             _MTLFX_PRIVATE_DEF_SEL( setIsUITextureComposited_,
-                                    "setIsUItextureComposited:" );
+                                    "setIsUITextureComposited:" );
             _MTLFX_PRIVATE_DEF_SEL( setJitterOffsetX_,
                                     "setJitterOffsetX:" );
             _MTLFX_PRIVATE_DEF_SEL( setJitterOffsetY_,
@@ -427,8 +419,6 @@ namespace MTLFX
                                     "setRoughnessTextureFormat:" );
             _MTLFX_PRIVATE_DEF_SEL( setScaler_,
                                     "setScaler:" );
-            _MTLFX_PRIVATE_DEF_SEL( setScaler4_,
-                                    "setScaler4:" );
             _MTLFX_PRIVATE_DEF_SEL( setShouldResetHistory_,
                                     "setShouldResetHistory:" );
             _MTLFX_PRIVATE_DEF_SEL( specularHitDistanceTexture,

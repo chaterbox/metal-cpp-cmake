@@ -96,8 +96,6 @@ public:
 class Compiler : public NS::Referencing<Compiler>
 {
 public:
-    void                          cancel();
-
     MTL::Device*                  device() const;
 
     NS::String*                   label() const;
@@ -189,11 +187,6 @@ _MTL_INLINE void MTL4::CompilerTaskOptions::setLookupArchives(const NS::Array* l
     Object::sendMessage<void>(this, _MTL_PRIVATE_SEL(setLookupArchives_), lookupArchives);
 }
 
-_MTL_INLINE void MTL4::Compiler::cancel()
-{
-    Object::sendMessage<void>(this, _MTL_PRIVATE_SEL(cancel));
-}
-
 _MTL_INLINE MTL::Device* MTL4::Compiler::device() const
 {
     return Object::sendMessage<MTL::Device*>(this, _MTL_PRIVATE_SEL(device));
@@ -263,7 +256,7 @@ _MTL_INLINE MTL4::CompilerTask* MTL4::Compiler::newDynamicLibrary(const NS::URL*
 _MTL_INLINE MTL4::CompilerTask* MTL4::Compiler::newDynamicLibrary(const MTL::Library* pLibrary, const MTL::NewDynamicLibraryCompletionHandlerFunction& function)
 {
     __block MTL::NewDynamicLibraryCompletionHandlerFunction blockFunction = function;
-    return newDynamicLibrary(pLibrary, ^(MTL::DynamicLibrary* pLibrary, NS::Error* pError) { blockFunction(pLibrary, pError); });
+    return newDynamicLibrary(pLibrary, ^(MTL::DynamicLibrary* pLibraryRef, NS::Error* pError) { blockFunction(pLibraryRef, pError); });
 }
 
 _MTL_INLINE MTL4::CompilerTask* MTL4::Compiler::newDynamicLibrary(const NS::URL* pURL, const MTL::NewDynamicLibraryCompletionHandlerFunction& function)
@@ -343,7 +336,7 @@ _MTL_INLINE MTL4::CompilerTask* MTL4::Compiler::newRenderPipelineStateBySpeciali
 _MTL_INLINE MTL4::CompilerTask* MTL4::Compiler::newRenderPipelineStateBySpecialization(const MTL4::PipelineDescriptor* pDescriptor, const MTL::RenderPipelineState* pPipeline, const MTL4::NewRenderPipelineStateCompletionHandlerFunction& function)
 {
     __block MTL4::NewRenderPipelineStateCompletionHandlerFunction blockFunction = function;
-    return newRenderPipelineStateBySpecialization(pDescriptor, pPipeline, ^(MTL::RenderPipelineState* pPipeline, NS::Error* pError) { blockFunction(pPipeline, pError); });
+    return newRenderPipelineStateBySpecialization(pDescriptor, pPipeline, ^(MTL::RenderPipelineState* pPipelineRef, NS::Error* pError) { blockFunction(pPipelineRef, pError); });
 }
 
 _MTL_INLINE MTL4::PipelineDataSetSerializer* MTL4::Compiler::pipelineDataSetSerializer() const
